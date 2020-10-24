@@ -1,0 +1,28 @@
+version: "3.4"
+
+networks:
+  frontend:
+    name: docky_network_frontend
+  backend:
+    name: docky_network_backend
+
+services:
+  web:
+    build: ../images/web/
+    image: docky-web
+    container_name: docky-web
+    ports:
+      - 80:8080
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - api
+
+  api:
+    build: ../images/api/
+    image: docky-api
+    container_name: docky-api
+    command: gunicorn --bind 0.0.0.0:8081 --workers 4 "api:app"
+    networks:
+      - backend
