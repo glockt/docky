@@ -1,1 +1,1 @@
-docker-compose -f docker-compose.yml --build --project-name=docky up -d
+docker-compose -f docker-compose.yml --project-name=docky up -d --build
