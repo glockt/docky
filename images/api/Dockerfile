@@ -1,12 +1,11 @@
 FROM python:latest
 
-WORKDIR /api/data
+ENV HOME=/api/data
+WORKDIR $HOME
 COPY api.py .
 
 RUN apt-get -y update
-RUN pip3 install Flask waitress
+RUN pip3 install Flask waitress gunicorn
 
 EXPOSE 8081
 
-ENTRYPOINT [ "python" ]
-CMD [ "api.py" ]
