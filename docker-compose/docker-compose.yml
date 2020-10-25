@@ -2,9 +2,7 @@ version: "3.4"
 
 networks:
   frontend:
-    name: docky_network_frontend
   backend:
-    name: docky_network_backend
 
 services:
   web:
@@ -12,7 +10,7 @@ services:
     image: docky-web
     container_name: docky-web
     ports:
-      - 80:8080
+      - 8080:8080
     networks:
       - frontend
       - backend
