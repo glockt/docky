@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 #Create a route decorator to tell the application, which URL should be called for the #described function and define the function
 
-@app.route('/api')
+@app.route('/')
 def index():
     name = request.args.get("name", "World")
     return jsonify({'greeting': 'Hello', 'name': escape(name)})
