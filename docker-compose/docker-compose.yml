@@ -21,6 +21,6 @@ services:
     build: ../images/api/
     image: docky-api
     container_name: docky-api
-    command: gunicorn --bind 0.0.0.0:8081 --workers 4 "api:app"
+    command: uvicorn --host 0.0.0.0 --port 8081 --workers 4 "api:app"
     networks:
       - backend

@@ -1,17 +1,12 @@
-#Import the flask module
-import json
-from flask import Flask, escape, request, jsonify
+from typing import Optional
+from fastapi import FastAPI
 from waitress import serve
 
-#Create a Flask constructor. It takes name of the current module as the argument
-app = Flask(__name__)
+app = FastAPI()
 
-#Create a route decorator to tell the application, which URL should be called for the #described function and define the function
-
-@app.route('/')
-def index():
-    name = request.args.get("name", "World")
-    return jsonify({'greeting': 'Hello', 'name': escape(name)})
+@app.get("/")
+async def root(name: Optional[str] = "World"):
+    return {'greeting': 'Hello', 'name': name}
 
 #Create the main driver function
 if __name__ == '__main__':
