@@ -3,7 +3,7 @@ upstream api {
 }
 
 server {
-    listen 8080;
+    listen ${NGINX_PORT};
     server_name localhost;
 
 	root /var/www;
@@ -14,7 +14,7 @@ server {
 }
 
 server {
-    listen 8080;
+    listen ${NGINX_PORT};
     server_name api.localhost;
 
     location / {
