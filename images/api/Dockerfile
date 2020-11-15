@@ -5,7 +5,6 @@ WORKDIR $HOME
 COPY api.py .
 
 RUN apt-get -y update
-RUN pip3 install Flask waitress gunicorn
+RUN pip3 install fastapi uvicorn
 
 EXPOSE 8081
-
